@@ -22,20 +22,20 @@ class Battlefield:
         self.chosen_robo_index = input("Choose a robot: ")
     
     def battle(self):
-        while self.fleet.fleet_list != [] and self.herd.herd_list != []:
+        while self.fleet.robots_list != [] and self.herd.herd_list != []:
             self.show_dino_opponent_options()
             self.show_robo_opponent_options()
             self.dino_turn(self.chosen_dino_index)
             self.robo_turn(self.chosen_robo_index)
 
     def dino_turn(self,dinosaur_index):
-        self.herd.herd_list[dinosaur_index].dino_attack(self.fleet.fleet_list[self.chosen_robo_index])
-        if self.fleet.fleet_list[self.chosen_robo_index].health == 0:
-            self.fleet.fleet_list.pop(self.chosen_robo_index)
+        self.herd.herd_list[dinosaur_index].dino_attack(self.fleet.robots_list[self.chosen_robo_index])
+        if self.fleet.robots_list[self.chosen_robo_index].health == 0:
+            self.fleet.robots_list.pop(self.chosen_robo_index)
     
     def robo_turn(self, robot_index):
         #Fleet()[].dinosaur.dino_health -= self.robot_weapon(Herd()[0])
-        self.fleet.fleet_list[robot_index].robo_attack(self.herd.herd_list[self.chosen_dino_index])
+        self.fleet.robots_list[robot_index].robo_attack(self.herd.herd_list[self.chosen_dino_index])
         if self.herd.herd_list[self.chosen_dino_index].health == 0:
             self.herd.herd_list.pop(self.chosen_dino_index)
 

@@ -6,7 +6,7 @@ class Herd:
         
 
     def list_avail_dinos(self):
-        # for loop that loops through the appened herd_list 
+        # for loop that loops through the herd_list 
         # and adds a index number every time it runs
         index = 0
         for dinosaur in self.herd_list:

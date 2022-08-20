@@ -24,31 +24,31 @@ class Battlefield:
             if len(self.herd.herd_list) == 0:
                 self.display_winner("Robots")
                 self.game_not_over = False
-            elif len(self.fleet.robots_list) == 0:
+            elif len(self.fleet.fleet_list) == 0:
                 self.display_winner("Dinosaurs")
                 self.game_not_over = False
 
     def dino_turn(self):
         # I created an if statement to not call the function if there are no more dinosaurs in the herd list
-        # I call to display all the dinosaur choices
-        # asking the user to type a number for their chosen dinosaur
-        # Using the user input from above as an index position in the herd_list
-        # I call to display all the robots to choose to attack
-        # asking the user to type a number for their chosen robot to attack
-        # using the user input from above as an index position in the robots_list
-        # the chosen dinosaur to attack the chosen robot with the info above
-        # if robot is dead, remove them from the list
         if len(self.herd.herd_list) != 0:
+            # I call to display all the dinosaur choices
             self.show_dino_options()
+            # asking the user to type a number for their chosen dinosaur
             dino_index_position = int(input("Pick a Dinosaur from above: "))
+            # I call to display all the robots to choose to attack
             self.show_robo_options()
+            # asking the user to type a number for their chosen robot to attack
             robot_index_position = int(input("Which Robot would you like to attack: "))
+            # Using the user input from above as an index position in the herd_list
             dinosaur_choice = self.herd.herd_list[dino_index_position]
-            robot_choice = self.fleet.robots_list[robot_index_position]
+            # using the user input from above as an index position in the robots_list
+            robot_choice = self.fleet.fleet_list[robot_index_position]
+            # the chosen dinosaur to attack the chosen robot with the info above
             dinosaur_choice.dino_attack(robot_choice)
+            # if robot is dead, remove them from the list
             if robot_choice.robot_health <= 0:
                 print(f"{dinosaur_choice.dino_name} killed {robot_choice.robot_name}! ")
-                self.fleet.robots_list.remove(robot_choice)
+                self.fleet.fleet_list.remove(robot_choice)
 
        
         
@@ -62,10 +62,10 @@ class Battlefield:
         # using the user input from above as an index position in the dinosaur_list
         # the chosen dinosaur to attack the chosen robot with the info above
         # if the dinosaur is dead, remove him from the list
-        if len(self.fleet.robots_list) != 0:
+        if len(self.fleet.fleet_list) != 0:
             self.show_robo_options()
             robot_index_position = int(input("Pick a Robot from above: "))
-            robot_choice = self.fleet.robots_list[robot_index_position]
+            robot_choice = self.fleet.fleet_list[robot_index_position]
             self.show_dino_options()
             dino_index_position = int(input("Now choose a dinosaur you want to attack: "))
             dinosaur_choice = self.herd.herd_list[dino_index_position]
